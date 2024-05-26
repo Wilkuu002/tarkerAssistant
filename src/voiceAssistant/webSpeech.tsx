@@ -12,7 +12,7 @@ const VoiceAssistant: React.FC = () => {
 
         const recognition = new (window.SpeechRecognition || (window as any).webkitSpeechRecognition)();
         recognition.lang = 'pl-PL';
-        recognition.interimResults = true;
+        recognition.interimResults = false;
 
         recognition.onstart = () => setIsListening(true);
         recognition.onend = () => setIsListening(false);
