@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TarkovApiFetch = () => {
+const TarkovApiFetch = ({transcript}) => {
     const [itemName, setItemName] = useState('');
     const [itemData, setItemData] = useState(null);
     const [error, setError] = useState(null);
