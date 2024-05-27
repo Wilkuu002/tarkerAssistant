@@ -1,6 +1,7 @@
 import viteLogo from '/vite.svg';
 import './App.css';
 import VoiceAssistant from './voiceAssistant/webSpeech'
+import TarkovApiFetch from "./tarkovApi/tarkovApiFetch.tsx";
 
 function App() {
 
@@ -11,14 +12,11 @@ function App() {
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
         <div>
             <VoiceAssistant />
+        </div>
+        <div>
+            <TarkovApiFetch/>
         </div>
 
     </>
