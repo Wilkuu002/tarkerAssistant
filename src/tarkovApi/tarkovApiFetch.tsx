@@ -15,8 +15,9 @@ const TarkovApiFetch: React.FC<Props> = ({transcript}) => {
     }, [transcript]);
 
     useEffect(() => {
-        // Wywołaj fetchItemData, gdy itemName zostanie zaktualizowany
-        fetchItemData();
+        if (itemName !== '') {
+            fetchItemData();
+        }
     }, [itemName]);
 
     const fetchItemData = async () => {
