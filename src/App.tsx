@@ -1,7 +1,6 @@
 import viteLogo from '/vite.svg';
 import './App.css';
 import VoiceAssistant from './voiceAssistant/webSpeech'
-import TarkovApiFetch from "./tarkovApi/tarkovApiFetch.tsx";
 
 function App() {
 
@@ -14,9 +13,6 @@ function App() {
       </div>
         <div>
             <VoiceAssistant />
-        </div>
-        <div>
-            <TarkovApiFetch/>
         </div>
 
     </>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import TarkovApiFetch from "../tarkovApi/tarkovApiFetch.tsx";
 
 const VoiceAssistant: React.FC = () => {
     const [transcript, setTranscript] = useState('');
@@ -48,7 +49,8 @@ const VoiceAssistant: React.FC = () => {
             <button onClick={handleButtonClick}>
                 {isListening ? 'Zatrzymaj' : 'Aktywuj Asystenta'}
             </button>
-            <p>{transcript}</p>
+            <div>Kliknij Check Price aby rozpocząć szukanie {transcript}</div>
+            <TarkovApiFetch transcript={transcript} />
         </div>
     );
 };

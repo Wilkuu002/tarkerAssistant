@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import {useEffect, useState} from 'react';
 
-const TarkovApiFetch = ({transcript}) => {
+interface Props {
+    transcript: string; // Określenie typu elementu transcript jako string
+}
+const TarkovApiFetch: React.FC<Props> = ({transcript}) => {
     const [itemName, setItemName] = useState('');
-    const [itemData, setItemData] = useState(null);
-    const [error, setError] = useState(null);
+    const [itemData, setItemData] = useState<any>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const fetchItemData = async () => {
         try {
+            console.log('1')
+            setItemName(transcript);
+            console.log('2')
+
             const response = await fetch('https://api.tarkov.dev', {
                 method: 'POST',
                 headers: {
@@ -38,15 +45,14 @@ const TarkovApiFetch = ({transcript}) => {
             console.error(error);
         }
     };
+    useEffect(() => {
+        // Wywołaj fetchItemData za każdym razem, gdy transcript się zmieni
+        fetchItemData();
+    }, [transcript]);
+
 
     return (
         <div>
-            <input
-                type="text"
-                value={itemName}
-                onChange={(e) => setItemName(e.target.value)}
-                placeholder="Enter item name"
-            />
             <button onClick={fetchItemData}>Check Price</button>
             {error && <p>{error}</p>}
             {itemData && (
