@@ -1,19 +1,20 @@
-import viteLogo from '/vite.svg';
 import './App.css';
 import VoiceAssistant from './voiceAssistant/webSpeech'
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainComponent from "./components/homePage/MainComponent.tsx";
 
 function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
+      <div className={"container"}>
+        <MainComponent/>
+          <div>
+              <VoiceAssistant />
+          </div>
       </div>
-        <div>
-            <VoiceAssistant />
-        </div>
+
 
     </>
   )

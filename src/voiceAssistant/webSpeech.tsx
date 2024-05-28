@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import TarkovApiFetch from "../tarkovApi/tarkovApiFetch.tsx";
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const VoiceAssistant: React.FC = () => {
     const [transcript, setTranscript] = useState('');
@@ -49,8 +52,7 @@ const VoiceAssistant: React.FC = () => {
 
     return (
         <div>
-            <h1>Asystent Głosowy</h1>
-            <button onClick={handleButtonClick}>
+            <button type="button" className="btn btn-primary" onClick={handleButtonClick}>
                 {isListening ? 'Zatrzymaj' : 'Aktywuj Asystenta'}
             </button>
             <div>Kliknij Check Price aby rozpocząć szukanie {transcript}</div>
