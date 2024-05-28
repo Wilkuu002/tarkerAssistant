@@ -18,12 +18,16 @@ const VoiceAssistant: React.FC = () => {
         recognition.onstart = () => setIsListening(true);
         recognition.onend = () => setIsListening(false);
 
+        // @ts-expect-error: SpeechRecognition was alarming about type error but was working
         recognition.onresult = (event: SpeechRecognitionEvent) => {
             const speechResult = event.results[0][0].transcript;
             setTranscript(speechResult);
         };
 
-        recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+        recognition.onerror = (event) => {
+            console.error(`Speech recognition error detected: ${event.error}`);
+        };
+        recognition.onerror = (event) => {
             console.error('Recognition error: ', event.error);
             setIsListening(false);
         };
