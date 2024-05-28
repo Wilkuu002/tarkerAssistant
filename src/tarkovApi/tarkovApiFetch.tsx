@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react';
+import { ItemData } from '../types/types.ts';
+import { Props } from '../types/types.ts';
 
-interface Props {
-    transcript: string; // Określenie typu elementu transcript jako string
-}
+
 const TarkovApiFetch: React.FC<Props> = ({transcript}) => {
     const [itemName, setItemName] = useState('');
-    const [itemData, setItemData] = useState<any>(null);
+    const [itemData, setItemData] = useState<ItemData | null>(null);
     const [error, setError] = useState<string | null>(null);
 
 

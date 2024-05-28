@@ -23,7 +23,7 @@ const VoiceAssistant: React.FC = () => {
             setTranscript(speechResult);
         };
 
-        recognition.onerror = (event: any) => {
+        recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
             console.error('Recognition error: ', event.error);
             setIsListening(false);
         };
