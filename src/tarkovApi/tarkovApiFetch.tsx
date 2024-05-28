@@ -8,10 +8,20 @@ const TarkovApiFetch: React.FC<Props> = ({transcript}) => {
     const [itemData, setItemData] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
 
+
+    useEffect(() => {
+        // Aktualizuj itemName, gdy zmienia się transcript
+        setItemName(transcript);
+    }, [transcript]);
+
+    useEffect(() => {
+        // Wywołaj fetchItemData, gdy itemName zostanie zaktualizowany
+        fetchItemData();
+    }, [itemName]);
+
     const fetchItemData = async () => {
         try {
             console.log('1')
-            setItemName(transcript);
             console.log('2')
 
             const response = await fetch('https://api.tarkov.dev', {
@@ -45,10 +55,7 @@ const TarkovApiFetch: React.FC<Props> = ({transcript}) => {
             console.error(error);
         }
     };
-    useEffect(() => {
-        // Wywołaj fetchItemData za każdym razem, gdy transcript się zmieni
-        fetchItemData();
-    }, [transcript]);
+
 
 
     return (
