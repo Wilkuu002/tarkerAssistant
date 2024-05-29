@@ -22,8 +22,6 @@ const TarkovApiFetch: React.FC<Props> = ({transcript}) => {
 
     const fetchItemData = async () => {
         try {
-            console.log('1')
-            console.log('2')
 
             const response = await fetch('https://api.tarkov.dev', {
                 method: 'POST',
