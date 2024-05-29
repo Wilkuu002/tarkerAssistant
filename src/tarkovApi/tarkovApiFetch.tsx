@@ -1,72 +1,46 @@
-import {useEffect, useState} from 'react';
-import { ItemData } from '../types/types.ts';
-import { Props } from '../types/types.ts';
+import React, { useState, useEffect } from 'react';
 
+interface Props {
+    transcript: string;
+}
 
-const TarkovApiFetch: React.FC<Props> = ({transcript}) => {
-    const [itemName, setItemName] = useState('');
-    const [itemData, setItemData] = useState<ItemData | null>(null);
+const TarkovApiFetch: React.FC<Props> = ({ transcript }) => {
+    const [itemData, setItemData] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
 
-
     useEffect(() => {
-        // Aktualizuj itemName, gdy zmienia się transcript
-        setItemName(transcript);
-    }, [transcript]);
+        if (!transcript) return;
 
-    useEffect(() => {
-        if (itemName !== '') {
-            fetchItemData();
-        }
-    }, [itemName]);
+        const fetchItemData = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/tarkov/item/${transcript}`);
 
-    const fetchItemData = async () => {
-        try {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch item data');
+                }
 
-            const response = await fetch('https://api.tarkov.dev', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify({
-                    query: `{
-                        items(name: "${itemName}") {
-                            id
-                            name
-                            shortName
-                            avg24hPrice
-                        }
-                    }`
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch item data');
+                const responseData = await response.json();
+                setItemData(responseData);
+                setError(null);
+            } catch (error) {
+                setError('Error fetching item data');
+                setItemData(null);
+                console.error(error);
             }
+        };
 
-            const responseData = await response.json();
-            setItemData(responseData.data.items[0]);
-            setError(null);
-        } catch (error) {
-            setError('Error fetching item data');
-            setItemData(null);
-            console.error(error);
-        }
-    };
-
-
+        fetchItemData();
+    }, [transcript]);
 
     return (
         <div>
-            <button onClick={fetchItemData}>Check Price</button>
             {error && <p>{error}</p>}
             {itemData && (
                 <div>
                     <p>Item ID: {itemData.id}</p>
                     <p>Name: {itemData.name}</p>
                     <p>Short Name: {itemData.shortName}</p>
-                    <p>Srednia cena na flea market: {itemData.avg24hPrice}</p>
+                    <p>Average 24h Price: {itemData.avg24hPrice}</p>
                 </div>
             )}
         </div>
