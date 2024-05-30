@@ -3,23 +3,22 @@ import VoiceAssistant from './voiceAssistant/webSpeech'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainComponent from "./components/homePage/MainComponent.tsx";
-import VoiceAssistant2 from "./voiceAssistant/webSpeechNew.tsx";
+import Home from "./components/home/home.tsx";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from "./components/auth/login/login.tsx";
+import Register from "./components/auth/register/register.tsx";
+
 
 function App() {
-
-  return (
-    <>
-      <div className={"container"}>
-        <MainComponent/>
-          <div>
-              <VoiceAssistant />
-              <VoiceAssistant2/>
-          </div>
-      </div>
-
-
-    </>
-  )
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App
