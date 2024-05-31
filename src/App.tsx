@@ -2,13 +2,10 @@ import './App.css';
 import VoiceAssistant from './voiceAssistant/webSpeech'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainComponent from "./components/homePage/MainComponent.tsx";
 import Home from "./components/home/home.tsx";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from "./components/auth/login/login.tsx";
 import Register from "./components/auth/register/register.tsx";
-
-
 function App() {
     return (
         <BrowserRouter>

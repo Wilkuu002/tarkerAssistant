@@ -1,4 +1,4 @@
-import { useAuth } from '../../contexts/authContext'
+import { useAuth } from '../../contexts/authContext/authContext.tsx'
 import MainComponent from "../homePage/MainComponent.tsx";
 import VoiceAssistant from "../../voiceAssistant/webSpeech.tsx";
 

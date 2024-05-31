@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword,GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword,GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import {auth} from "./firebase.ts";
 
 

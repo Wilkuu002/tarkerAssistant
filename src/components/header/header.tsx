@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../contexts/authContext'
+import { useAuth } from '../../contexts/authContext/authContext.tsx'
 import { doSignOut } from '../../firebase/auth'
 
 const Header = () => {
